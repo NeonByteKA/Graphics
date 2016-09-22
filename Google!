@@ -1,0 +1,804 @@
+/**
+ * This program's lucky subscriber is Chester Banks look at this awesome programmer's projects here:
+ * https://www.khanacademy.org/profile/chesterbanks/projects
+ * Subscribe to me here:
+ * https://www.khanacademy.org/computer-programming/subscribe-to-shadow-runner/6083696511
+ * The gmail is of a random person on the net.
+ *               Credits
+ * Chester Banks: Typing functionality
+ * Eytukan: For the google logos under the sign in function.
+ */
+var scene = "google";
+var usernamee = "Martin Brinkmann";
+var emaile = "martin.brinkmann@googlemail.com";
+var firstLetter = "M";
+var typingUsername = false;
+var typingEmail = false;
+var typingGoogle = false;
+var email = "";
+var username = "";
+var googlee = ""; 
+mouseClicked = function() {
+    typingEmail = (mouseX > 160 && mouseX < 440 && mouseY > 310 && mouseY < 360) ? true : false;
+    typingUsername = (mouseX > 160 && mouseX < 440 && mouseY > 360 && mouseY < 410) ? true : false;
+    typingGoogle = (mouseX > 30 && mouseX < 580 && mouseY > 320 && mouseY < 370) ? true : false;
+};
+var keys = [];
+var keyPressed = function() {
+    keys[keyCode] = true;
+};
+var keyReleased = function() {
+    keys[keyCode] = false;
+}; 
+keyTyped = function() {
+    if (typingEmail) {
+        var lengthOfEmail = email.length;
+        email += key.toString();
+        if (keys[8]) {
+            email = email.substring(lengthOfEmail - 1, 0);
+        }
+    }
+
+    if (typingUsername) {
+        var lengthOfUsername = username.length;
+        username += key.toString();
+        if (keys[8]) {
+            username = username.substring(lengthOfUsername - 1, 0);
+        }
+    }
+    if (typingGoogle) {
+        var addressBar = googlee.length;
+        googlee += key.toString();
+        if (keys[8]) {
+            googlee = googlee.substring(addressBar - 1, 0);
+        }
+    }
+};
+var googleLogo = function(x, y, s) {
+    pushMatrix();
+    translate(x, y);
+    scale(s);
+    strokeCap(SQUARE);
+    // G
+    noFill();
+    strokeWeight(18);
+    stroke(2, 133, 237);
+    arc(230, 200, 99, 100, -367, -61);
+    fill(2, 133, 237);
+    rect(240, 201, 36.48, 0.5);
+    // o
+    noFill();
+    stroke(219, 50, 54);
+    strokeWeight(15);
+    ellipse(330, 225, 60, 60);
+    // o
+    stroke(244, 194, 13);
+    strokeWeight(15);
+    ellipse(410, 225, 60, 60);
+    // g
+    stroke(2, 133, 237);
+    ellipse(490, 225, 60, 60);
+    noStroke();
+    fill(2, 133, 237);
+    rect(513, 190, 15, 85);
+    stroke(2, 133, 237);
+    noFill();
+    arc(495.5, 272, 50, 50, 360, 540);
+    // l
+    stroke(60, 186, 84);
+    rect(543, 150, 2, 100);
+    // e
+    stroke(219, 50, 54);
+    arc(595, 220, 60, 60, 10, 332);
+    rotate(-35);
+    rect(330, 517, 58, 0.1);
+    resetMatrix();
+};
+var addressBar = function() {
+    fill(255);
+    stroke(0, 0, 0, 70);
+    strokeWeight(1);
+    (rect)(width / 20, height / 2 + 20, width - 50, height / 12, 2, 0, 0, 0);
+    fill(211);
+    textSize(height / 30);
+    textFont(createFont("Serif"));
+    fill(200);
+    if (googlee === "" && !typingGoogle) {
+        text("Search Google or type URL", width / 20 + 10, height / 2 + 52);
+    } else {
+        noStroke();
+        fill(66);
+        textSize(height / 30 + 5);
+        text(typingGoogle && frameCount % 30 < 15 ? googlee + '|' : googlee, width / 20 + 10, height / 2 + 52);
+    }
+    strokeWeight(3);
+};
+var googleImagesAddressBar = function() {
+    fill(255);
+    stroke(0, 0, 0, 70);
+    strokeWeight(1);
+    (rect)(30, 320, 550, 50, 0, 2, 0, 2);
+    fill(211);
+    if (googlee === "" && !typingGoogle) {
+        text("", 40, 352);
+    } else {
+        noStroke();
+        fill(66);
+        textSize(25);
+        text(typingGoogle && frameCount % 30 < 15 ? googlee + '|' : googlee, 40, 352);
+    }
+    // Camera
+    fill(66, 62, 66);
+    rect(452.5, 332, 35, 30, 5);
+    noStroke();
+    (rect)(461, 328, 20, 5, 5, 5, 0, 0);
+    stroke(255);
+    strokeWeight(3);
+    ellipse(471, 347, 18, 18);
+    noStroke();
+    // Microphone
+    fill(2, 133, 237);
+    rect(505, 330, 10, 20, 10);
+    noFill();
+    stroke(244, 194, 13);
+    strokeWeight(3);
+    arc(510, 347, 18, 18, 360, 540);
+    stroke(219, 50, 54);
+    arc(510, 347, 18, 18, 360, 500);
+    stroke(60, 186, 84);
+    rect(510, 358, 1, 3);
+    noStroke();
+    // Magnifier
+    fill(2, 133, 239);
+    (rect)(530, 320, 50, 50, 0, 2, 0, 0);
+    noFill();
+    stroke(255);
+    ellipse(550, 343, 20, 20);
+    stroke(255);
+    rotate(-45);
+    rect(145, 643, 0, 12);
+    resetMatrix();
+};
+var topRightThingies = function() {
+    fill(76);
+    textSize(15);
+    text("Gmail", 350, 30);
+    text("Images", 420, 30);
+    stroke(76);
+    for (var x = 490; x < 510; x += 9) {
+        for (var y = 16; y < 38; y += 9) {
+            rect(x, y, 3, 3);
+        }
+    }
+    stroke(255);
+    fill(2, 133, 237);
+    rect(525, 5, 70, 40, 7);
+    fill(255);
+    textSize(15);
+    textFont(createFont("Serif Bold"));
+    text("Sign In", 534, 30);
+};
+var bottomThingies = function() {
+    fill(241);
+    noStroke();
+    rect(0, height - height / 15, width, height / 12);
+    fill(76);
+    textSize(height / 40);
+    textFont(createFont("Serif"));
+    text("Advertising", width / 30, height - 15);
+    text("Business", 130, height - 15);
+    text("About", 230, height - 15);
+    text("Privacy", 340, height - 15);
+    text("Terms", 440, height - 15);
+    text("Settings", 520, height - 15);
+};
+var googleImagesTopRightThingies = function() {
+    stroke(76);
+    for (var x = 490; x < 510; x += 9) {
+        for (var y = 13; y < 38; y += 9) {
+            rect(x, y, 3, 3);
+        }
+    }
+    stroke(255);
+    fill(2, 133, 237);
+    rect(525, 5, 70, 40, 7);
+    fill(255);
+    textSize(15);
+    textFont(createFont("Serif Bold"));
+    text("Sign In", 535, 30);
+};
+var googleImages = function() {
+    background(255);
+    bottomThingies();
+    googleLogo(width / 15, height / 6, height / 857);
+    googleImagesAddressBar();
+    googleImagesTopRightThingies();
+    textFont(createFont("Serif"));
+    fill(2, 133, 200);
+    textSize(20);
+    text("images", 415, 298);
+    if (mouseX > 20 && mouseX < 95 && mouseY > 570 && mouseY < 585) {
+        cursor(HAND);
+        strokeWeight(1);
+        stroke(0);
+        line(18, 586, 95, 586);
+    } else if (mouseX > 130 && mouseX < 190 && mouseY > 570 && mouseY < 585) {
+        cursor(HAND);
+        strokeWeight(1);
+        stroke(0);
+        line(129, 586, 190, 586);
+    } else if (mouseX > 230 && mouseX < 270 && mouseY > 570 && mouseY < 585) {
+        cursor(HAND);
+        strokeWeight(1);
+        stroke(0);
+        line(229, 586, 270, 586);
+    } else if (mouseX > 340 && mouseX < 385 && mouseY > 570 && mouseY < 585) {
+        cursor(HAND);
+        strokeWeight(1);
+        stroke(0);
+        line(339, 586, 386, 586);
+    } else if (mouseX > 440 && mouseX < 480 && mouseY > 570 && mouseY < 585) {
+        cursor(HAND);
+        strokeWeight(1);
+        stroke(0);
+        line(442, 586, 480, 586);
+    } else if (mouseX > 520 && mouseX < 575 && mouseY > 570 && mouseY < 585) {
+        cursor(HAND);
+        strokeWeight(1);
+        stroke(0);
+        line(519, 586, 575, 586);
+    } else if (mouseX > 490 && mouseX < 510 && mouseY > 13 && mouseY < 38) {
+        cursor(HAND);
+        stroke(0);
+        for (var x = 490; x < 510; x += 9) {
+            for (var y = 13; y < 38; y += 9) {
+                rect(x, y, 3, 3);
+            }
+        }
+    } else if (mouseX > 525 && mouseX < 595 && mouseY > 5 && mouseY < 45) {
+        cursor(HAND);
+    } else if (mouseX > 80 && mouseX < 720 && mouseY > 320 && mouseY < 370) {
+        cursor(TEXT);
+    } else {
+        cursor(ARROW);
+    }
+};
+var signInBox = function() {
+    fill(0);
+    textSize(45);
+    textFont(createFont("Segoe UI Light"));
+    text("One account. All Of Google", 40, 110);
+    textSize(20);
+    text("Sign in to continue with Gmail", 180, 140);
+    fill(230);
+    noStroke();
+    rect(120, 150, 350, 360);
+    fill(210);
+    ellipse(305, 230, 131, 131);
+    fill(255);
+    ellipse(305, 205, 55, 55);
+    rect(265, 250, 80, 30);
+    arc(305, 250, 80, 30, 180, 360);
+    arc(305, 280, 80, 29, 360, 540);
+    textFont(createFont("Segoe UI"));
+    stroke(0, 0, 0, 20);
+    strokeWeight(1.5);
+    fill(255);
+    rect(160, 310, 280, 50);
+    rect(160, 360, 280, 50);
+    fill(200);
+    textSize(20);
+    if (email === "" && !typingEmail) {
+        fill(200);
+        text("Email", 170, 340);
+    } else {
+        cursor(TEXT);
+        fill(66);
+        text(typingEmail && frameCount % 30 < 15 ? email + '|' : email, 170, 340);
+    }
+    if (username === "" && !typingUsername) {
+        fill(200);
+        text("Username", 170, 390);
+    } else {
+        cursor(TEXT);
+        fill(66);
+        text(typingUsername && frameCount % 30 < 15 ? username + '|' : username, 170, 390);
+    }
+    fill(2, 133, 239);
+    rect(160, 420, 280, 45, 5);
+    fill(255);
+    textFont(createFont("Segoe UI Bold"));
+    textSize(22);
+    text("Sign In", 265, 450);
+    textFont(createFont("Serif"));
+    textSize(15);
+    fill(2, 133, 237);
+    text("Need help?", 160, 492);
+    text("Sign in with a different account", 200, 530);
+    textSize(20);
+    fill(0);
+    text("One Google account for everything Google", 125, 555);
+};
+var G = function(x, y, s) {
+    translate(x, y);
+    scale(s);
+    strokeCap(SQUARE);
+    // G
+    noFill();
+    strokeWeight(20);
+    stroke(255);
+    arc(230, 200, 99, 100, -367, -61);
+    fill(2, 133, 237);
+    rect(243, 200, 36.48, 0.5);
+    resetMatrix();
+};
+var google = function(x, y, s) {
+    translate(x, y);
+    scale(s);
+    strokeCap(SQUARE);
+    noFill();
+    strokeWeight(25);
+    stroke(219, 50, 54);
+    arc(230, 200, 99, 100, -147, -61);
+    stroke(244, 194, 13);
+    arc(230, 200, 99, 100, -207, -147);
+    stroke(60, 186, 84);
+    arc(230, 200, 99, 100, -297, -207);
+    stroke(2, 133, 237);
+    arc(230, 200, 99, 100, -367, -297);
+    fill(2, 133, 237);
+    rect(240, 201, 36.48, 0.5);
+    resetMatrix();
+};
+var gMail = function(x, y, s) {
+    translate(x, y);
+    scale(s);
+    strokeWeight(5);
+    strokeCap(ROUND);
+    stroke(219, 50, 54);
+    line(300, 590, 300, 570);
+    line(301, 570, 316, 580);
+    line(318, 579, 330, 570);
+    line(330, 570, 330, 590);
+    strokeCap(SQUARE);
+    noStroke();
+    fill(241);
+    triangle(299, 567, 332, 566.5, 315, 577);
+    rect(304, 584, 23, 10);
+    triangle(304, 576, 305, 585, 320, 585);
+    triangle(327, 576, 315, 585, 327, 585);
+    resetMatrix();
+};
+var googleMaps = function(x, y, s) {
+    translate(x, y);
+    scale(s);
+    noStroke();
+    fill(38, 162, 98);
+    rect(340, 565, 30, 30, 10);
+    G(334, 558, 0.065);
+    noStroke();
+    rotate(-45);
+    fill(244, 194, 13);
+    rect(-247, 590, 35, 4, 5);
+    resetMatrix();
+    fill(2, 133, 237);
+    triangle(245, 594, 255, 585, 265, 594);
+    rotate(45);
+    fill(237);
+    (rect)(594, 225, 15, 8, 0, 5, 5, 0);
+    resetMatrix();
+    fill(183);
+    triangle(270, 590, 259, 580, 270, 569);
+    fill(219, 50, 54);
+    ellipse(265, 565, 15, 15);
+    triangle(262, 570, 266, 585, 268, 570);
+    fill(109, 31, 32);
+    ellipse(265, 565, 5, 5);
+    resetMatrix();
+};
+var youtube = function(x, y, s) {
+    translate(x, y);
+    scale(s);
+    noStroke();
+    fill(209, 17, 28);
+    rect(44, 87, 303, 200, 65);
+    fill(255);
+    triangle(167, 144, 249, 186, 167, 227);
+    fill(226, 216, 217);
+    triangle(248, 186, 173, 148, 239, 190);
+    resetMatrix();
+};
+var googleDrive = function(x, y, s) {
+    translate(x, y);
+    scale(s);
+    noStroke();
+    translate(404, 557);
+    scale(0.12);
+    fill(249, 196, 56);
+    quad(374, 225, 275, 225, 194, 68, 293, 68);
+    fill(43, 86, 232);
+    quad(373, 225, 330, 307, 154, 307, 198, 225);
+    fill(37, 148, 75);
+    quad(109, 217, 194, 68, 239, 155, 154, 307);
+    fill(219, 170, 45);
+    triangle(257, 190, 275, 224, 374, 225);
+    fill(32, 81, 208);
+    triangle(154, 307, 200, 225, 240, 225);
+    fill(32, 129, 68);
+    triangle(194, 68, 239, 155, 217, 194);
+    resetMatrix();
+};
+var googlePlay = function(x, y, s) {
+    pushMatrix();
+    translate(x, y);
+    scale(s);
+    noStroke();
+    fill(255, 160, 122);
+    beginShape();
+    vertex(294, 118);
+    vertex(243, 163);
+    vertex(294, 210);
+    vertex(313, 197);
+    vertex(358, 169);
+    vertex(355, 155);
+    vertex(313, 130);
+    endShape(CLOSE);
+    arc(346, 163, 29, 20, -45, 51);
+    fill(162, 234, 172);
+    beginShape();
+    vertex(294, 118);
+    vertex(243, 163);
+    vertex(113, 22);
+    endShape(CLOSE);
+    fill(219, 70, 107);
+    beginShape();
+    vertex(243, 163);
+    vertex(294, 210);
+    vertex(113, 320);
+    endShape(CLOSE);
+    fill(0, 187, 194);
+    beginShape();
+    vertex(243, 163);
+    vertex(113, 320);
+    vertex(113, 22);
+    endShape();
+    resetMatrix();
+};
+var googlePhotos = function(x, y, s) {
+    pushMatrix();
+    translate(x, y);
+    scale(s);
+    noStroke();
+    strokeWeight(1);
+    fill(220, 75, 63);
+    beginShape();
+    vertex(307, 200);
+    vertex(307, 125);
+    vertex(224, 47);
+    vertex(224, 170);
+    vertex(232, 193);
+    vertex(255, 200);
+    endShape(CLOSE);
+    fill(175, 25, 90);
+    beginShape();
+    vertex(307, 200);
+    vertex(307, 125);
+    vertex(232, 193);
+    vertex(255, 200);
+    endShape(CLOSE);
+    stroke(228, 110, 99);
+    beginShape();
+    vertex(307, 125);
+    vertex(232, 193);
+    endShape();
+    noStroke();
+    fill(67, 134, 244);
+    beginShape();
+    vertex(255, 200);
+    vertex(378, 200);
+    vertex(307, 278);
+    vertex(224, 278);
+    vertex(224, 236);
+    vertex(232, 211);
+    endShape(CLOSE);
+    fill(53, 105, 214);
+    beginShape();
+    vertex(232, 211);
+    vertex(307, 278);
+    vertex(224, 278);
+    vertex(224, 236);
+    endShape(CLOSE);
+    stroke(37, 70, 179);
+    beginShape();
+    vertex(232, 211);
+    vertex(307, 278);
+    endShape();
+    noStroke();
+    fill(141, 196, 77);
+    beginShape();
+    vertex(224, 236);
+    vertex(224, 359);
+    vertex(145, 278);
+    vertex(146, 200);
+    vertex(191, 200);
+    vertex(216, 211);
+    endShape(CLOSE);
+    fill(24, 161, 95);
+    beginShape();
+    vertex(216, 211);
+    vertex(146, 278);
+    vertex(146, 200);
+    vertex(191, 200);
+    endShape(CLOSE);
+    stroke(70, 148, 62);
+    beginShape();
+    vertex(216, 211);
+    vertex(146, 278);
+    endShape();
+    noStroke();
+    fill(255, 193, 19);
+    beginShape();
+    vertex(191, 200);
+    vertex(68, 200);
+    vertex(146, 125);
+    vertex(224, 125);
+    vertex(224, 170);
+    vertex(216, 193);
+    endShape(CLOSE);
+    fill(255, 158, 15);
+    beginShape();
+    vertex(216, 193);
+    vertex(146, 125);
+    vertex(224, 125);
+    vertex(224, 170);
+    endShape(CLOSE);
+    stroke(244, 128, 10);
+    beginShape();
+    vertex(216, 193);
+    vertex(146, 125);
+    endShape();
+    resetMatrix();
+};
+var chromeLogo = function(x, y, s) {
+    pushMatrix();
+    translate(x, y);
+    scale(s);
+    noStroke();
+    fill(219, 50, 54);
+    arc(200, 200, 300, 300, 240, 360);
+    fill(15, 163, 97);
+    arc(200, 200, 300, 300, 120, 240);
+    fill(247, 197, 60);
+    arc(200, 200, 300, 300, 0, 120);
+    quad(350, 200, 232, 208, 197, 127, 350, 127);
+    fill(15, 163, 97);
+    quad(255, 249, 183, 361, 109, 336, 169, 240);
+    fill(222, 81, 69);
+    quad(124, 63, 200, 200, 131, 218, 66, 104);
+    fill(232, 187, 63);
+    triangle(332, 127, 214, 127, 199, 180);
+    fill(8, 147, 86);
+    triangle(212, 200, 253, 251, 189, 352);
+    fill(206, 74, 62);
+    triangle(71, 116, 131, 216, 200, 208);
+    strokeWeight(18);
+    stroke(255);
+    fill(52, 121, 238);
+    ellipse(200, 200, 130, 130);
+    noFill();
+    ellipse(200, 200, 318, 318);
+    resetMatrix();
+};
+var bottomCharacters = function() {
+    // Google
+    google(125, 535, 0.23);
+    // gMail
+    gMail(-100, 0, 1);
+    // Google Maps
+    googleMaps(-100, 0, 1);
+    // Youtube
+    youtube(268.5, 556, 0.13);
+    // Google drive
+    googleDrive(-100, 0);
+    //  Google Play
+    googlePlay(385, 563, 0.1);
+    // Google Photos
+    googlePhotos(345, 555, 0.12);
+    // Chrome
+    chromeLogo(420, 560, 0.1);
+};
+var googleSearch = function() {
+    googleLogo(width / 15 - 1, height / 6, height / 857);
+    addressBar();
+    topRightThingies();
+    bottomThingies();
+    noStroke();
+    fill(241);
+    rect(150, 400, 150, 50, 5);
+    rect(310, 400, 150, 50, 5);
+    fill(2, 133, 237);
+    textSize(17);
+    textFont(createFont("Serif Bold"));
+    fill(100);
+    text("Google Search", 165.5, 430);
+    text("I'm feeling lucky", 318.5, 430);
+};
+var signIn = function() {
+    background(255);
+    googleLogo(150, -50, 0.4);
+    signInBox();
+    bottomCharacters();
+    if (mouseX > 160 && mouseX < 440 && mouseY > 310 && mouseY < 360) {
+        cursor(TEXT);
+    } else if (mouseX > 160 && mouseX < 440 && mouseY > 360 && mouseY < 410) {
+        cursor(TEXT);
+    } else if (mouseX > 160 && mouseX < 440 && mouseY > 420 && mouseY < 465) {
+        cursor(HAND);
+    } else if (mouseX > 160 && mouseX < 235 && mouseY > 480 && mouseY < 492) {
+        cursor(HAND);
+        strokeWeight(1);
+        stroke(2, 133, 237);
+        line(160, 493, 235, 493);
+    } else if (mouseX > 200 && mouseX < 405 && mouseY > 520 && mouseY < 530) {
+        cursor(HAND);
+        strokeWeight(1);
+        stroke(2, 133, 237);
+        line(200, 531, 405, 531);
+    } else {
+        cursor(ARROW);
+    }
+};
+var chooseAnAccount = function() {
+    googleLogo(150, -50, 0.4);
+    fill(0);
+    textFont(createFont("Serif"));
+    textSize(27);
+    text("Choose an account", 195, 100);
+    noStroke();
+    fill(244);
+    rect(100, 150, 400, 100, 10);
+    fill(0, 0, 200);
+    ellipse(150, 200, 65, 65);
+    fill(255);
+    textSize(50);
+    textFont(createFont("Serif"));
+    text(firstLetter, 129, 215);
+    fill(2, 133, 237);
+    textFont(createFont("Serif Bold"));
+    textSize(20);
+    text(usernamee, 200, 190);
+    fill(0);
+    textFont(createFont("Serif"));
+    textSize(15);
+    text(emaile, 200, 215);
+    fill(244);
+    rect(100, 300, 400, 62.5, 10);
+    fill(2, 133, 237);
+    text("Add Account", 165, 335);
+    text("Remove", 370, 335);
+    stroke(200);
+    strokeWeight(1);
+    line(300, 310, 300, 352.5);
+    if (mouseX > 165 && mouseX < 250 && mouseY > 320 && mouseY < 335) {
+        cursor(HAND);
+        stroke(2, 133, 237);
+        line(165, 336, 250, 336);
+    } else if (mouseX > 370 && mouseX < 425 && mouseY > 320 && mouseY < 335) {
+        cursor(HAND);
+        stroke(2, 133, 237);
+        line(370, 336, 425, 336);
+    } else {
+        cursor(ARROW);
+    }
+};
+draw = function() {
+    if (scene === "google") {
+        textAlign(LEFT);
+        background(255);
+        googleSearch();
+    }
+    if (mouseIsPressed && mouseX > 420 && mouseX < 465 && mouseY > 15 && mouseY < 31) {
+        scene = "googleImages";
+    }
+    if (scene === "googleImages") {
+        googleImages();
+    }
+    if (mouseIsPressed && mouseX > 725 && mouseX < 795 && mouseY > 5 && mouseY < 45) {
+        scene = "signIn";
+    }
+    if (scene === "signIn") {
+        signIn();
+    }
+    if (scene === "chooseAnAccount") {
+        background(255);
+        chooseAnAccount();
+    }
+    if (scene === "google") {
+        if (mouseX > 350 & mouseX < 386 && mouseY > 17 && mouseY < 28) {
+            cursor(HAND);
+            stroke(0);
+            strokeWeight(1);
+            line(350, 31, 389, 31);
+            noStroke();
+        } else if (mouseX > 420 && mouseX < 465 && mouseY > 15 && mouseY < 31) {
+            cursor(HAND);
+            stroke(0);
+            strokeWeight(1);
+            line(420, 31, 468, 31);
+            noStroke();
+        } else if (mouseX > 725 && mouseX < 795 && mouseY > 5 && mouseY < 45) {
+            cursor(HAND);
+        } else if (mouseX > 490 && mouseX < 510 && mouseY > 13 && mouseY < 35) {
+            cursor(HAND);
+            stroke(0);
+            for (var x = 490; x < 510; x += 9) {
+                for (var y = 16; y < 38; y += 9) {
+                    rect(x, y, 3, 3);
+                }
+            }
+            noStroke();
+        } else if (mouseX > 30 && mouseX < 580 && mouseY > 320 && mouseY < 370) {
+            cursor(TEXT);
+        } else if (mouseX > 20 && mouseX < 95 && mouseY > 570 && mouseY < 585) {
+            cursor(HAND);
+            strokeWeight(1);
+            stroke(0);
+            line(18, 586, 95, 586);
+        } else if (mouseX > 130 && mouseX < 190 && mouseY > 570 && mouseY < 585) {
+            cursor(HAND);
+            strokeWeight(1);
+            stroke(0);
+            line(129, 586, 190, 586);
+        } else if (mouseX > 230 && mouseX < 270 && mouseY > 570 && mouseY < 585) {
+            cursor(HAND);
+            strokeWeight(1);
+            stroke(0);
+            line(229, 586, 270, 586);
+        } else if (mouseX > 340 && mouseX < 385 && mouseY > 570 && mouseY < 585) {
+            cursor(HAND);
+            strokeWeight(1);
+            stroke(0);
+            line(339, 586, 386, 586);
+        } else if (mouseX > 525 && mouseX < 595 && mouseY > 5 && mouseY < 45) {
+            cursor(HAND);
+        } else if (mouseX > 440 && mouseX < 480 && mouseY > 570 && mouseY < 585) {
+            cursor(HAND);
+            strokeWeight(1);
+            stroke(0);
+            line(442, 586, 480, 586);
+        } else if (mouseX > 520 && mouseX < 575 && mouseY > 570 && mouseY < 585) {
+            cursor(HAND);
+            strokeWeight(1);
+            stroke(0);
+            line(519, 586, 575, 586);
+        } else if (mouseX > 150 && mouseX < 300 && mouseY > 400 && mouseY < 450) {
+            cursor(HAND);
+            fill(245);
+            rect(150, 400, 150, 50, 5);
+            fill(0);
+            text("Google Search", 165.5, 430);
+        } else if (mouseX > 310 && mouseX < 460 && mouseY > 400 && mouseY < 450) {
+            cursor(HAND);
+            fill(245);
+            rect(310, 400, 150, 50, 5);
+            fill(0);
+            text("I'm feeling lucky", 318.5, 430);
+        } else if (mouseX > 692 && mouseX < 715 && mouseY > 320 && mouseY < 355) {
+            cursor(HAND);
+            fill(0);
+            triangle(706, 363, 695, 370, 715, 370);
+            rect(642, 370, 120, 25);
+            textSize(14);
+            fill(255);
+            text("Search by voice", 649, 387);
+        } else {
+            cursor(ARROW);
+        }
+        if (mouseIsPressed && mouseX > 350 & mouseX < 386 && mouseY > 17 && mouseY < 28) {
+            scene = "chooseAnAccount";
+        }
+        if (mouseIsPressed && mouseX > 525 && mouseX < 595 && mouseY > 5 && mouseY < 45) {
+            scene = "signIn";
+        }
+    }
+};
