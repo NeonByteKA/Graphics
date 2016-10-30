@@ -9,9 +9,9 @@
  * Eytukan: For the google logos under the sign in function.
  */
 var scene = "google";
-var usernamee = "Martin Brinkmann";
-var emaile = "martin.brinkmann@googlemail.com";
-var firstLetter = "M";
+var usernamee = "HFM2402";
+var emaile = "ragamuffin2402@googlemail.com";
+var firstLetter = "H";
 var typingUsername = false;
 var typingEmail = false;
 var typingGoogle = false;
