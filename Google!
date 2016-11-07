@@ -1,17 +1,27 @@
 /**
- * This program's lucky subscriber is Chester Banks look at this awesome programmer's projects here:
- * https://www.khanacademy.org/profile/chesterbanks/projects
- * Subscribe to me here:
- * https://www.khanacademy.org/computer-programming/subscribe-to-shadow-runner/6083696511
+ * Google
+ * Shadow Runner
+ * November 2016
+ * This program's LUCKY SUBSCRIBER is TALAL ZULFIQAR look at this awesome programmer's cool flat design drawings here:
+ * https://www.khanacademy.org/profile/EvilPirate/projects
+ * PROGRAM DETAILS
+        {
+            * This project is my biggest project yet. My best                project which shows my vast skill range of graphics. 
+            * All of the buttons except those at the                         bottom are clickable.
+ *      }
+ * SUBSCRIBE TO ME HERE 
+        {
+            * https://www.khanacademy.org/cs/i/5922063852306432
+        }
  * The gmail is of a random person on the net.
  *               Credits
  * Chester Banks: Typing functionality
  * Eytukan: For the google logos under the sign in function.
  */
 var scene = "google";
-var usernamee = "HFM2402";
-var emaile = "ragamuffin2402@googlemail.com";
-var firstLetter = "H";
+var usernamee = "Martin Brinkmann";
+var emaile = "martin.brinkmann@gmail.com";
+var firstLetter = "M";
 var typingUsername = false;
 var typingEmail = false;
 var typingGoogle = false;
@@ -83,15 +93,14 @@ var googleLogo = function(x, y, s) {
     rect(513, 190, 15, 85);
     stroke(2, 133, 237);
     noFill();
-    arc(495.5, 272, 50, 50, 360, 540);
+    arc(495.5, 272, 50, 50, 0, 180);
     // l
     stroke(60, 186, 84);
     rect(543, 150, 2, 100);
     // e
     stroke(219, 50, 54);
     arc(595, 220, 60, 60, 10, 332);
-    rotate(-35);
-    rect(330, 517, 58, 0.1);
+    line(622, 197.5, 570, 235);
     resetMatrix();
 };
 var addressBar = function() {
@@ -111,6 +120,16 @@ var addressBar = function() {
         textSize(height / 30 + 5);
         text(typingGoogle && frameCount % 30 < 15 ? googlee + '|' : googlee, width / 20 + 10, height / 2 + 52);
     }
+    fill(2, 133, 237);
+    rect(554.5, 330, 10, 20, 10);
+    noFill();
+    stroke(244, 194, 13);
+    strokeWeight(3);
+    arc(560, 347, 18, 18, 360, 540);
+    stroke(219, 50, 54);
+    arc(560, 347, 18, 18, 360, 500);
+    stroke(60, 186, 84);
+    rect(560, 358, 1, 3);
     strokeWeight(3);
 };
 var googleImagesAddressBar = function() {
@@ -195,7 +214,7 @@ var bottomThingies = function() {
 var googleImagesTopRightThingies = function() {
     stroke(76);
     for (var x = 490; x < 510; x += 9) {
-        for (var y = 13; y < 38; y += 9) {
+        for (var y = 16; y < 38; y += 9) {
             rect(x, y, 3, 3);
         }
     }
@@ -251,7 +270,7 @@ var googleImages = function() {
         cursor(HAND);
         stroke(0);
         for (var x = 490; x < 510; x += 9) {
-            for (var y = 13; y < 38; y += 9) {
+            for (var y = 16; y < 38; y += 9) {
                 rect(x, y, 3, 3);
             }
         }
@@ -662,7 +681,7 @@ var chooseAnAccount = function() {
     fill(255);
     textSize(50);
     textFont(createFont("Serif"));
-    text(firstLetter, 129, 215);
+    text(firstLetter, 130, 217);
     fill(2, 133, 237);
     textFont(createFont("Serif Bold"));
     textSize(20);
@@ -692,6 +711,7 @@ var chooseAnAccount = function() {
     }
 };
 draw = function() {
+    smooth();
     if (scene === "google") {
         textAlign(LEFT);
         background(255);
