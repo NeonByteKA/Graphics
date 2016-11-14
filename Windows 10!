@@ -1,12 +1,22 @@
 /**
- * This program's lucky subscrber is Josiah The Calculus Way!!!. 
- * Look at his projects here:
- * https://www.khanacademy.org/profile/Hsh3/projects
- * Subscribe to me here:
- * https://www.khanacademy.org/computer-programming/subscribe-to-shadow-runner/6083696511
- *                  Credits
- * Chester Banks: For telling me how to add the typing 
-functionality
+ * Windows 10
+ * Shadow Runner
+ * This program's LUCKY SUBSCRIBER is FRUSTRATED PROGRAMMER! Check out this awesome programmer's cool games here:
+ * https://www.khanacademy.org/profile/ElijahMan/projects
+ * PROGRAM DETAILS
+        {
+            * This is my biggest project yet all the things that
+            you see here are clickable all of them will work.
+            * The Google and Edge simulations were taken
+            from a project that I had finished earlier.
+        }
+ * SUBSCRIBE TO ME HERE 
+        {
+        * https://www.khanacademy.org/cs/i/6083696511
+        }
+ *              Credits
+ * Edge logo: Chester Banks
+ * Chrome logo: Awkward Studios
  */ 
 var scene = "startingScreen";
 var username = "Shadow Runner";
@@ -21,13 +31,29 @@ var powerOff = function() {
 var netSign = function(x, y, s) {
     translate(x, y);
     scale(s);
+    noFill();
     stroke(255);
     strokeWeight(2);
-    arc(535, 590.3, 18, 18, 180, 270);
     arc(535, 590.3, 28, 28, 180, 270);
     arc(535, 590.3, 38, 38, 180, 270);
+    arc(535, 590.3, 18, 18, 180, 270);
     strokeWeight(5);
     point(533, 589);
+    resetMatrix();
+};
+var windowsLogo = function(x, y, s, color) {
+    translate(x, y);
+    scale(s);
+    fill(color);
+    noStroke();
+    translate(120, 38);
+    quad(180, 60, 180, 112, 120, 112, 120, 67);
+    translate(0, 50);
+    quad(180, 66, 180, 116, 120, 110, 120, 66);
+    translate(64, 6);
+    quad(193, 60, 193, 118, 120, 110, 120, 60);
+    translate(13, -65);
+    quad(180, 60, 180, 121, 107, 121, 107, 69);
     resetMatrix();
 };
 var startingScreen = function() {
@@ -39,7 +65,6 @@ var startingScreen = function() {
     stroke(255, 255, 255);
     ellipse(300, 160, 70, 70);
     arc(300, 245, 100, 100, 181, 360);
-    noStroke();
     fill(255);
     textFont(createFont("Segoe UI"));
     textSize(35);
@@ -50,10 +75,16 @@ var startingScreen = function() {
     fill(255);
     textFont(createFont("Calibri"));
     text(language.toUpperCase(), 460, 585);
+    noStroke();
     powerOff();
     netSign();
+    noStroke();
+    fill(18, 184, 230);
+    rect(245, 342, 110, 30);
+    textSize(25);
+    fill(255);
+    text("Sign in", 265, 365);
     if(mouseX >= 460 && mouseX <= 500 && mouseY >= 565 && mouseY <= 585) {
-        cursor(HAND);
         noStroke();
         fill(0, 0, 0, 80);
         rect(457, 555, 52, 40);
@@ -62,21 +93,208 @@ var startingScreen = function() {
         textFont(createFont("Calibri"));
         text(language.toUpperCase(), 460, 585);
         if(mouseIsPressed) {
-            scene = "keyboardLanguageOptions";
+            if(mouseIsPressed && mouseX >= 460 && mouseX <= 500 && mouseY >= 565 && mouseY <= 585) {
+                scene = "startingScreen";
+            }
         }
-    }
-    if(mouseX > 515 && mouseX < 535 && mouseY > 570 && mouseY < 590) {
+    } else if(mouseX > 245 && mouseX < 355 && mouseY > 342 && mouseY < 372) {
         cursor(HAND);
+        if(mouseIsPressed) {
+            scene = "homePage";
+        }
+    } else if(mouseX > 515 && mouseX < 535 && mouseY > 570 && mouseY < 590) {
+        fill(0, 0, 0, 80);
+        rect(508, 563, 38, 33);
+        netSign();
         if(mouseIsPressed) {
             scene = "net";
         }
-    }
-    if(mouseX > 180 && mouseX < 405 && mouseY > 350 && mouseY < 380) {
-        cursor(TEXT);
+    } else if(dist(mouseX, mouseY, 560, 580) <= 12.5) {
+        noStroke();
+        fill(0, 0, 0, 80);
+        rect(543, 560, 35, 35);
+        powerOff();
     }
 };
+var chromeLogo = function(x, y, s) {
+    noStroke();
+    fill(230, 80, 85);
+    arc(x, y, s, s, -150, -30);
+    fill(255, 205, 25);
+    arc(x, y, s, s, -30, 90);
+    fill(60, 185, 85);
+    arc(x, y, s, s, 90, 210);
+    triangle(x + s/4.4, y + s/10, x, y + s/2, x, y);
+    fill(230, 80, 85);
+    triangle(x - s/4.4, y + s/10, x - s/2.31, y - s/3.9, x, y);
+    fill(255, 205, 25);
+    triangle(x, y - s/4, x + s/2.31, y - s/3.9, x, y);
+    fill(0, 0, 0, 20);
+    triangle(x + s/4.4, y + s/10, x, y + s/2, x + s/7, y);
+    triangle(x - s/4.4, y + s/10, x - s/2.31, y - s/3.9, x, y + s/7);
+    triangle(x, y - s/4, x + s/2.31, y - s/3.9, x, y - s/7);
+    fill(255, 255, 255);
+    ellipse(x, y, s/2, s/2);
+    fill(72, 133, 237);
+    ellipse(x, y, s/2 - s/10, s/2 - s/10);
+};
+var edgeLogo = function(x, y, s) {
+    pushMatrix();
+    translate(x, y);
+    scale(s);
+    strokeWeight(2);
+    stroke(55, 129, 189);
+    fill(55, 129, 189);
+    beginShape();
+    vertex(33, 111);
+    vertex(46, 81);
+    vertex(64, 60);
+    vertex(92, 40);
+    vertex(123, 31);
+    vertex(144, 31);
+    vertex(33, 111);
+    endShape();
+    beginShape();
+    vertex(34, 116);
+    vertex(40, 101);
+    vertex(53, 99);
+    vertex(34, 116);
+    endShape();
+    beginShape();
+    vertex(141, 30);
+    vertex(164, 35);
+    vertex(180, 44);
+    vertex(195, 55);
+    vertex(209, 69);
+    vertex(217, 84);
+    vertex(225, 105);
+    vertex(228, 123);
+    vertex(229, 143);
+    vertex(229, 154);
+    vertex(194, 155);
+    vertex(141, 30);
+    endShape();
+    beginShape();
+    vertex(142, 30);
+    vertex(84, 75);
+    vertex(105, 68);
+    vertex(129, 68);
+    vertex(148, 71);
+    vertex(165, 83);
+    vertex(142, 30);
+    endShape();
+    beginShape();
+    vertex(176, 106);
+    vertex(198, 155);
+    vertex(91, 155);
+    vertex(172, 116);
+    vertex(176, 106);
+    endShape();
+    beginShape();
+    vertex(173, 117);
+    vertex(89, 117);
+    vertex(91, 157);
+    vertex(173, 117);
+    endShape();
+    beginShape();
+    vertex(101, 84);
+    vertex(75, 105);
+    vertex(58, 130);
+    vertex(53, 158);
+    vertex(57, 184);
+    vertex(71, 208);
+    vertex(75, 215);
+    vertex(101, 84);
+    endShape();
+    beginShape();
+    vertex(90, 134);
+    vertex(72, 212);
+    vertex(95, 228);
+    vertex(90, 134);
+    endShape();
+    beginShape();
+    vertex(91, 223);
+    vertex(112, 235);
+    vertex(132, 240);
+    vertex(150, 241);
+    vertex(167, 241);
+    vertex(182, 238);
+    vertex(214, 230);
+    vertex(211, 186);
+    vertex(159, 198);
+    vertex(123, 194);
+    vertex(102, 182);
+    vertex(90, 160);
+    vertex(91, 223);
+    endShape();
+    noFill();
+    stroke(49, 120, 187);
+    strokeWeight(5);
+    bezier(229, 155, 239, -5, 50, -5, 32, 123);
+    bezier(148, 72, 75, 61, 66, 87, 32, 123);
+    bezier(172, 115, 172, 102, 168, 82, 148, 72);
+    bezier(94, 114, 96, 104, 101, 95, 103, 83);
+    bezier(215, 229, 58, 285, 2, 137, 103, 83);
+    bezier(212, 184, 163, 206, 90, 201, 93, 155);
+    line(170, 115, 94, 115);
+    line(228, 155, 94, 155);
+    line(212, 184, 215, 228);
+    noStroke();
+    popMatrix();
+};
+var startingPage = function() {
+    cursor(ARROW);
+    // Chrome
+    chromeLogo(44, 40, 50);
+    fill(255);
+    textSize(11);
+    textFont(createFont("Calibri"));
+    text("Google", 29, 77);
+    text("Chrome", 27, 88);
+    if(mouseX > 13 && mouseX < 73 && mouseY > 10 && mouseY < 103)
+    {
+        cursor(HAND);
+        stroke(8, 147, 240);
+        strokeWeight(1);
+        fill(0, 130, 217);
+        rect(13, 10, 60, 93);
+        chromeLogo(44, 40, 50);
+        fill(255);
+        textSize(11);
+        textFont(createFont("Calibri"));
+        text("Google", 29, 77);
+        text("Chrome", 27, 88);
+    }
+    // Edge
+    edgeLogo(20, 100, 0.2);
+};
+var taskbar = function() {
+    fill(26);
+    rect(-9, 559, 640, 60);
+    windowsLogo(-35, 550, 0.2, color(255));
+    fill(87);
+    rect(55, 559, 230, 60);
+    strokeWeight(3);
+    stroke(255);
+    ellipse(80, 579, 25, 25);
+    fill(180);
+    textSize(14);
+    text("Ask me anything", 100, 582.5);
+    strokeWeight(1);
+    stroke(180);
+    noFill();
+    (rect)(265, 568, 8, 14, 1, 2, 2, 2);
+    line(276, 582, 273, 585);
+    line(275, 577, 275, 582);
+    line(272, 584.5, 266, 584.5);
+    line(267, 585.5, 263, 582);
+    line(269, 585, 269, 588);
+    line(266, 588, 272, 588);
+    line(262.5, 577, 262.5, 582);
+};
 var homePage = function() {
-    
+    startingPage();
+    taskbar();
 };
 var keyboardLanguageOptions = function() {
     startingScreen();
