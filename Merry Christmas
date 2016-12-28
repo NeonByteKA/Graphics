@@ -1,5 +1,14 @@
 /**
- * I'm in advanced graphics.
+ * Merry Christmas
+ * Shadow Runner
+ * December 2016
+ * 
+ * PROGRAM DETAILS {
+                   * This is an entry to Legolas's christmas                         contest. Nothing else..      
+                   }
+ *                  CONTEST ENTRY INFO
+ * I'm in graphics(obviously)
+ * My level is expert.
  */ 
 var cloud = function(x, y, size) {
     translate(x, y);
@@ -20,8 +29,8 @@ var cloud = function(x, y, size) {
     arc(119, 140, 47, 58, 270, 450);
     resetMatrix();
 };
-var pentagon = function(f_color, x1, y1, x2, y2, x3, y3, x4, y4, x5, y5) {
-    fill(f_color);
+var pentagon = function(color, x1, y1, x2, y2, x3, y3, x4, y4, x5, y5) {
+    fill(color);
     beginShape();
         vertex(x1, y1);
         vertex(x2, y2);
@@ -30,9 +39,9 @@ var pentagon = function(f_color, x1, y1, x2, y2, x3, y3, x4, y4, x5, y5) {
         vertex(x5, y5);
     endShape();
 };
-var tree = function(x, y, size) {
+var tree = function(x, y, s) {
     translate(x, y);
-    scale(size);
+    scale(s);
     fill(118, 108, 99);
     rect(300, 497.5, 2.5, 10);
     fill(78, 55, 39);
@@ -193,10 +202,10 @@ var christmasLandscape = function() {
     tree(285, 402, 0.3);
     tree(287, 451, 0.2);
     platform2();
-    textFont(createFont("Trebuchet MS"));
-    textSize(50);
-    fill(255);
-    text("Merry Christmas!", 120, 50);
 };
 background(160, 183, 189);
 christmasLandscape();
+textFont(createFont("Trebuchet MS"));
+textSize(50);
+fill(255);
+text("Merry Christmas!", 120, 50);
