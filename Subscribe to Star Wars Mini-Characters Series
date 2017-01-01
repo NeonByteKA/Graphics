@@ -1,0 +1,109 @@
+var A = function(x, y, s) {
+    translate(x, y);
+    scale(s);
+    noStroke();
+    fill(255, 232, 31);
+    triangle(415, 230, 435, 310, 395, 310);
+    fill(0);
+    triangle(415, 255, 425, 300, 405, 300);
+    noFill();
+    stroke(255, 232, 31);
+    line(330, 364, 380, 364);
+    line(333, 367, 390, 200);
+    line(387, 203, 440, 203);
+    line(437, 200, 490, 367);
+    line(491.5, 364, 445, 364);
+    line(448, 365, 438, 334);
+    line(439, 337, 385, 337);
+    line(388, 337, 377, 364);
+    resetMatrix();
+};
+var R = function(x, y, s) {
+    translate(x, y);
+    scale(s);
+    line(420, 174, 500, 174);
+    line(424, 174, 424, 300);
+    arc(497, 209, 70, 70, 270, 450);
+    line(500, 245, 515, 262);
+    line(514, 260, 570.5, 260);
+    line(497, 297, 567, 297);
+    line(500, 298, 460, 257);
+    line(462, 258, 462, 300);
+    line(462, 296, 422, 296);
+    line(452, 204, 487, 204);
+    line(456, 204, 456, 222);
+    line(452, 222, 487, 222);
+    arc(486, 213, 18, 18, 270, 450);
+    resetMatrix();
+};
+var S = function(x, y, s) {
+    translate(x, y);
+    scale(s);
+    strokeCap(SQUARE);
+    line(80, 200, 212, 200);
+    arc(134, 317, 70, 80, 0, 90);
+    arc(87, 247, 55, 95, 180, 270);
+    line(135, 357, 10, 357);
+    line(14, 311, 104, 311);
+    line(213, 247, 124, 247);
+    strokeCap(ROUND);
+    line(124, 247, 169, 317);
+    line(104, 311, 60, 247);
+    strokeCap(SQUARE);
+};
+var starWars = function(s) {
+    scale(s);
+    noFill();
+    strokeWeight(8);
+    strokeCap(SQUARE);
+    // S & T
+    stroke(255, 232, 31);
+    line(211, 200, 330.5, 200);
+    line(327, 200, 327, 251);
+    line(327, 247, 252, 247);
+    line(256, 247, 256, 367);
+    line(256, 364, 211, 364);
+    line(214, 367, 214, 243);
+    S();
+    line(14, 357, 14, 307);
+    // A
+    A();
+    // R
+    strokeCap(SQUARE);
+    R(-30, -16, 1.06);
+    line(571, 260, 570, 303);
+    // W
+    fill(255, 232, 31);
+    line(10, 330, 70, 330);
+    line(13, 327, 50, 465);
+    line(47, 462, 93, 462);
+    line(90, 465, 109, 382);
+    line(109, 382, 122, 465);
+    line(119, 462, 162, 462);
+    line(160, 465, 197, 326.5);
+    line(199, 330, 147, 330);
+    line(150, 327, 133, 387.5);
+    line(133.5, 387.5, 118, 331);
+    line(120, 331, 100, 331);
+    line(100, 327, 90, 387.5);
+    line(90, 387.5, 70, 327);
+    // A
+    A(-95, 161, 0.83);
+    // R & S
+    R(-120, 150, 1.05);
+    S(403, 175, 0.8);
+    line(0, 360, 140, 360);
+    arc(140, 320, 70, 80, 0, 90);
+    strokeCap(ROUND);
+    line(174, 320, 133, 252);
+    resetMatrix();
+};
+background(0);
+starWars(0.82);
+textAlign(CENTER, CENTER);
+fill(255);
+textFont(createFont("Brush Script MT"), 25);
+textSize(35);
+text("Subscribe to my", 300, 120);
+textFont(createFont("Brush Script MT"), 70);
+text("Mini-Character Series", 300, 525);
