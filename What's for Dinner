@@ -1,0 +1,61 @@
+/** Dear evaluator or any person who is viewing this program,
+ * I know this is a weird choice of food but I'm not very creative usually, so, this happened. Sorry!
+ */
+noStroke();
+// Tea
+background(201, 28, 47);
+fill(126, 3, 26);
+ellipse(120, 78, 60, 60);
+fill(255);
+ellipse(125, 75, 60, 60);
+fill(51, 2, 1);
+ellipse(125, 75, 50, 50);
+fill(140, 46, 0);
+ellipse(125, 75, 47, 47);
+stroke(126, 3, 26);
+strokeWeight(8);
+line(89.5, 84, 79, 85.5);
+stroke(255);
+line(93, 78, 82, 80);
+noStroke();
+// Plate
+fill(255);
+ellipse(200, 200, 200, 200);
+fill(103, 226, 255);
+ellipse(200, 200, 195, 195);
+fill(255);
+ellipse(200, 200, 170, 170);
+fill(195);
+ellipse(200, 200, 145, 145);
+// Egg
+fill(255);
+ellipse(215, 225, 75, 75);
+ellipse(215, 190, 50, 50);
+ellipse(180, 223, 50, 50);
+fill(254, 226, 51);
+ellipse(220, 230, 40, 40);
+fill(255);
+ellipse(218, 220, 11, 11);
+// Cheese
+fill(254, 228, 138);
+rect(200, 115, 60, 50, 7, 0, 0, 0);
+fill(250, 227, 56);
+triangle(200, 115, 260, 115, 200, 165);
+fill(255, 233, 133);
+// Tomato
+var tomato = function(x, y, w, h) {
+    fill(147, 44, 1);
+    ellipse(x, y, w, h);
+    fill(242, 65, 30);
+    ellipse(x, y, w - 5, h - 5);
+    fill(147, 44, 1);
+    ellipse(x, y, w - 12, h - 12);
+    rectMode(CENTER);
+    fill(242, 65, 30);
+    rect(x - 1, y, 3, h - 6);
+    rect(x - 1, y, w - 7, 3);
+    ellipse(x - 0.5, y + 0.5, 7, 7);
+};  
+tomato(140, 190, 50, 50);
+tomato(170, 130, 40, 40);
+tomato(150, 150, 60, 60);
